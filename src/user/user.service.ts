@@ -9,11 +9,11 @@ export class UserService {
     constructor (@InjectRepository(User) private userRepo: Repository<User>){}
 
     getAddUser(userdata){
-        const check = this.userRepo.findOne(userdata.email)
+        // const check = this.userRepo.findOne(userdata.email)
 
-        if (check){
-            throw new HttpException ('This user is already existed', HttpStatus.BAD_REQUEST)
-        }
+        // if (check){
+        //     throw new HttpException ('This user is already existed', HttpStatus.BAD_REQUEST)
+        // }
         return this.userRepo.save(userdata)
     }
 
@@ -31,7 +31,7 @@ export class UserService {
         return result;
     }
 
-    getUpdateUser(id: string, data: userdto): Promise<any>{
+    getUpdateUser(id: string, data: User): Promise<any>{
         const result =  this.userRepo.findOne(id)
 
         if (!result){
